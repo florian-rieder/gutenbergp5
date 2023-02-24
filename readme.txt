@@ -1,9 +1,9 @@
 === Gutenberg p5.js Block ===
 Contributors: florian-rieder
 Tags: p5js, processing, generative art, creative coding, visual data, javascript
-Requires at least: 5.0
+Requires at least: 6.1
 Tested up to: 6.1
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,4 +43,8 @@ A: You can find the GitHub Repository of this plugin here: https://github.com/fl
 
 == Changelog ==
 
-0.1.0 - Released working block with sizing, layout and scrollbar settings.
+1.0.0 - Released working block with sizing, layout and scrollbar settings.
+
+== Acknowledgements ==
+
+This plugin is similar to Mark Uraine's p5js block (https://wordpress.org/plugins/wp-p5js-block/), and is in fact reverse engineered from it, although very little of the actual code is reused (see [mapk/p5js-block](https://github.com/mapk/p5js-block)). I was prompted to develop this plugin due to encountering bugs, lack of display options, and mostly the lack of updates and support for this original plugin. I feel like it should be easier to insert p5.js artworks into Wordpress websites and blogs, and this is my contribution to it (although it may very well be buggy, but I try my best. Feel free to open an issue or a pull request).

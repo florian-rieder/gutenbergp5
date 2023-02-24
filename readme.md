@@ -3,7 +3,7 @@
 - Contributors:      Florian Rieder
 - Tags:              p5.js, Processing, Generative Art, Creative Coding
 - Tested up to:      6.1
-- Stable tag:        0.1.0
+- Stable tag:        1.0.0
 - License:           GPL-2.0-or-later
 - License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,11 +32,11 @@ npm run build
 
 ## Screenshots
 
-![Edit mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/Screenshot-1.png)
-![Preview mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/Screenshot-2.png)
+![Edit mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/screenshot-1.png)
+![Preview mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/screenshot-2.png)
 
 ## Changelog
 
-### 0.1.0
+### 1.0.0
 
-* Release
+* Released working block with sizing, layout and scrollbar settings.
