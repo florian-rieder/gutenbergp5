@@ -32,8 +32,8 @@ npm run build
 
 ## Screenshots
 
-![Edit mode](./assets/screenshot-1.png)
-![Preview mode](./assets/screenshot-2.png)
+![Edit mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/Screenshot-1.png)
+![Preview mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/Screenshot-2.png)
 
 ## Changelog
 
