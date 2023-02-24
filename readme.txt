@@ -1,5 +1,5 @@
 === Gutenberg p5.js Block ===
-Contributors: florian-rieder
+Contributors: florianrieder
 Tags: p5js, processing, generative art, creative coding, visual data, javascript
 Requires at least: 6.1
 Tested up to: 6.1
