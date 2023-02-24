@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Gutenberg p5.js Block
- * Description:       Adds a Gutenberg block to insert p5.js code in your pages and preview it as you edit.
- * Keywords:          p5js, Generative Art, Creative Coding, Processing
+ * Plugin Name:       Easy p5.js Block
+ * Description:       Adds a Gutenberg block to easily add custom p5.js code in your pages and preview it as you edit.
+ * Keywords:          p5js, Generative Art, Creative Coding, Processing, Visual Data, Javascript, Block
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           1.0.0

@@ -1,13 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
-  "name": "create-block/gutenbergp5",
+  "name": "gutenbergp5/p5js",
   "version": "1.0.0",
   "title": "p5.js",
   "category": "formatting",
-  "icon": {
-    "src": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'><path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' /></svg>"
-  },
   "description": "Add custom p5.js code and preview it as you edit.",
   "supports": {
     "html": false

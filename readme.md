@@ -1,4 +1,4 @@
-# Gutenbergp5 - Gutenberg p5.js block
+# Gutenbergp5 - Easy p5.js Block
 
 - Contributors:      Florian Rieder
 - Tags:              p5.js, Processing, Generative Art, Creative Coding

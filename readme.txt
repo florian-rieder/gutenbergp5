@@ -1,13 +1,13 @@
-=== Gutenberg p5.js Block ===
+=== Easy p5.js Block ===
 Contributors: florianrieder
-Tags: p5js, processing, generative art, creative coding, visual data, javascript
+Tags: p5js, processing, generative art, creative coding, visual data, javascript, block
 Requires at least: 6.1
 Tested up to: 6.1
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a Gutenberg block to add custom p5.js code in your pages and preview it as you edit.
+Adds a Gutenberg block to easily add custom p5.js code in your pages and preview it as you edit.
 
 == Description ==
 
