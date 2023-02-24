@@ -6,6 +6,8 @@
  */
 
 .wp-block-p5js {
+    width: 100%;
+
     iframe {
         padding: 0;
         margin: 0;
@@ -26,6 +28,11 @@
 .gutenbergp5-align-right{
     display: flex;
     justify-content: right;
+}
+
+.gutenbergp5-align-wide{
+    display: flex;
+    justify-content: stretch;
 }
 
 #gutenbergp5-controls{

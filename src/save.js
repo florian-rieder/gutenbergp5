@@ -45,8 +45,8 @@ export default function save({ attributes }) {
                 frameBorder="0"
                 srcDoc={iframeHtml}
                 scrolling={attributes.hasScrollbar ? "yes" : "no"} // legacy or sth
-                style={attributes.hasScrollbar ? "" : "overflow:hidden;"} // supposedly the new way
-                width={attributes.width}
+                style={"width:" + attributes.alignment == "wide" ? "100%" : attributes.width + "; height: " + attributes.height + ";" + attributes.hasScrollbar ? "" : "overflow:hidden;"}
+                width={attributes.alignment == "wide" ? "100%" : attributes.width}
                 height={attributes.height}
                 className={attributes.width || attributes.height ? "gutenbergp5-noresize" : "" }
             />

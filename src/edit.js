@@ -24,6 +24,7 @@ import {
     ToolbarGroup,
     ToolbarButton,
     SandBox,
+    ToolbarDropdownMenu,
     __experimentalUnitControl as UnitControl
 } from '@wordpress/components';
 
@@ -38,6 +39,7 @@ import { edit, image } from '@wordpress/icons';
  */
 import './editor.scss';
 
+import { justifyLeft, justifyCenter, justifyRight, justifyStretch } from '@wordpress/icons'
 
 
 /**
@@ -58,22 +60,60 @@ export default function Edit({ attributes, setAttributes }) {
 
     const [hasScrollbar, setHasScrollbar] = useState(attributes.hasScrollbar || false);
     const [isPreview, setIsPreview] = useState(false);
-    const [width, setWidth] = useState(attributes.width);
-    const [height, setHeight] = useState(attributes.height);
+    const [frameWidth, setWidth] = useState(attributes.width);
+    const [frameHeight, setHeight] = useState(attributes.height);
     //const [isDisabled, setIsDisabled] = useState(true);
 
+    const justifyIcons = {
+        "left": justifyLeft,
+        "center": justifyCenter,
+        "right": justifyRight,
+        "wide": justifyStretch
+    }
+
     return (
-        <div {...useBlockProps()} className={`wp-block-p5js gutenbergp5-align-${attributes.alignment}`}>
+        <div {...useBlockProps()}>
+            {/** 
+             *  Block toolbar 
+             */}
             <BlockControls>
-                <AlignmentToolbar
-                    value={attributes.alignment}
-                    onChange={onChangeAlignment}
-                />
                 <ToolbarGroup>
-                    <ToolbarButton icon={edit} label="Edit" onClick={() => setIsPreview(false)} className={`components-tab-button ${!isPreview ? 'is-active' : ''}`} />
-                    <ToolbarButton icon={image} label="Preview" onClick={() => setIsPreview(true)} className={`components-tab-button ${isPreview ? 'is-active' : ''}`} />
+                    <ToolbarDropdownMenu
+                        icon={justifyIcons[attributes.alignment]}
+                        label="Alignment"
+                        controls={[
+                            {
+                                title: "Left",
+                                icon: justifyLeft,
+                                onClick: () => setAttributes({ alignment: 'left' }),
+                            },
+                            {
+                                title: 'Center',
+                                icon: justifyCenter,
+                                onClick: () => setAttributes({ alignment: 'center' }),
+                            },
+                            {
+                                title: 'Right',
+                                icon: justifyRight,
+                                onClick: () => setAttributes({ alignment: 'right' }),
+                            },
+                            {
+                                title: 'Wide',
+                                icon: justifyStretch,
+                                onClick: () => setAttributes({ alignment: 'wide' }),
+                            },
+                        ]}
+                    />
+                </ToolbarGroup>
+                <ToolbarGroup>
+                    <ToolbarButton icon={edit} label={__("Edit")} onClick={() => setIsPreview(false)} className={`components-tab-button ${!isPreview ? 'is-active' : ''}`} />
+                    <ToolbarButton icon={image} label={__("Preview")} onClick={() => setIsPreview(true)} className={`components-tab-button ${isPreview ? 'is-active' : ''}`} />
                 </ToolbarGroup>
             </BlockControls>
+
+            {/** 
+             *  Inspector sidebar
+             */}
             <InspectorControls key="setting">
                 <div id="gutenbergp5-controls">
                     <ToggleControl
@@ -89,57 +129,65 @@ export default function Edit({ attributes, setAttributes }) {
                             setAttributes({ hasScrollbar: value });
                         }}
                     />
-                    <div>
-                        <UnitControl
-                            label={__('Width')}
-                            value={width}
-                            onChange={(value) => {
-                                setWidth(value);
-                                setAttributes({ width: value });
-                            }}
-                            units={[
-                                { label: 'px', value: 'px' },
-                                { label: '%', value: '%' },
-                            ]}
-                        />
-                        <UnitControl
-                            label={__('Height')}
-                            value={height}
-                            onChange={(value) => {
-                                setHeight(value);
-                                setAttributes({ height: value });
-                            }
-                            }
-                            units={[
-                                { label: 'px', value: 'px' },
-                                { label: '%', value: '%' },
-                            ]}
-                        />
-                    </div>
+                    <UnitControl
+                        label={__('Width')}
+                        value={frameWidth}
+                        onChange={(value) => {
+                            setWidth(value);
+                            setAttributes({ width: value });
+                        }}
+                        units={[
+                            { label: 'px', value: 'px' },
+                            { label: '%', value: '%' },
+                        ]}
+                    />
+                    <UnitControl
+                        label={__('Height')}
+                        value={frameHeight}
+                        onChange={(value) => {
+                            setHeight(value);
+                            setAttributes({ height: value });
+                        }
+                        }
+                        units={[
+                            { label: 'px', value: 'px' },
+                            { label: '%', value: '%' },
+                        ]}
+                        help={__("By default, the frame is the size of the canvas.")}
+                    />
                 </div>
             </InspectorControls>
 
+
+            {/** 
+             *  Block in Edit mode
+             */}
             {!isPreview && (
                 <TextareaControl
-                    label={__("p5.js sketch")}
-                    help={__("Enter your p5 sketch")}
+                    label={__("p5.js sketch editor")}
+                    //help={__("Enter your p5 sketch")}
                     value={attributes.sketch}
                     onChange={(value) => setAttributes({ sketch: value })}
                     rows="16"
                 />
             )}
 
-            {(isPreview /*|| isDisabled*/) && (
-                <SandBox
-                    html={
-                        `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
-                        '<script>' + attributes.sketch + '</script>'
-                    }
-                    style={hasScrollbar ? "" : "overflow:hidden;"}
-                    scrolling={hasScrollbar ? "yes" : "no"}
-                    width={width}
-                    height={height}
-                />
+            {/** 
+             *  Block in Preview mode
+             */}
+            {(isPreview) && (
+                <div className={`wp-block-p5js gutenbergp5-align-${attributes.alignment}`}>
+                    <SandBox
+                        html={
+                            `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
+                            '<script>' + attributes.sketch + '</script>'
+                        }
+                        style={"width:" + attributes.alignment == "wide" ? "100%" : frameWidth + "; height: " + frameHeight + ";" + hasScrollbar ? "" : "overflow:hidden;"}
+                        scrolling={hasScrollbar ? "yes" : "no"}
+                        width={attributes.alignment == "wide" ? "100%" : frameWidth}
+                        height={frameHeight}
+                    />
+                </div>
             )}
         </div>
     );

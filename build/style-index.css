@@ -7,6 +7,9 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-p5js {
+  width: 100%;
+}
 .wp-block-p5js iframe {
   padding: 0;
   margin: 0;
@@ -26,6 +29,11 @@
 .gutenbergp5-align-right {
   display: flex;
   justify-content: right;
+}
+
+.gutenbergp5-align-wide {
+  display: flex;
+  justify-content: stretch;
 }
 
 #gutenbergp5-controls {
