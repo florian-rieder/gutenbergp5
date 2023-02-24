@@ -6,5 +6,8 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-create-block-gutenbergp5 fieldset.components-placeholder__fieldset {
+  display: block !important;
+}
 
 /*# sourceMappingURL=index.css.map*/

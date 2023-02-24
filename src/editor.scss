@@ -5,7 +5,9 @@
  */
 
 .wp-block-create-block-gutenbergp5 {
-	//border: 1px dotted #f00;
+	fieldset.components-placeholder__fieldset{
+        display: block !important;
+    }
 }
 
 

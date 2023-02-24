@@ -13,7 +13,6 @@ import { __ } from '@wordpress/i18n';
  */
 import {
     useBlockProps,
-    AlignmentToolbar,
     BlockControls,
     InspectorControls,
 } from '@wordpress/block-editor';
@@ -24,8 +23,10 @@ import {
     ToolbarGroup,
     ToolbarButton,
     SandBox,
+    Placeholder,
     ToolbarDropdownMenu,
-    __experimentalUnitControl as UnitControl
+    __experimentalUnitControl as UnitControl,
+    Icon
 } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
@@ -51,19 +52,10 @@ import { justifyLeft, justifyCenter, justifyRight, justifyStretch } from '@wordp
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-
-    const onChangeAlignment = (newAlignment) => {
-        setAttributes({
-            alignment: newAlignment === undefined ? 'none' : newAlignment,
-        });
-    };
-
     const [hasScrollbar, setHasScrollbar] = useState(attributes.hasScrollbar || false);
-    const [isPreview, setIsPreview] = useState(false);
+    const [isPreview, setIsPreview] = useState(attributes.isPreview || false);
     const [frameWidth, setWidth] = useState(attributes.width);
     const [frameHeight, setHeight] = useState(attributes.height);
-    //const [isDisabled, setIsDisabled] = useState(true);
-
     const justifyIcons = {
         "left": justifyLeft,
         "center": justifyCenter,
@@ -106,8 +98,14 @@ export default function Edit({ attributes, setAttributes }) {
                     />
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <ToolbarButton icon={edit} label={__("Edit")} onClick={() => setIsPreview(false)} className={`components-tab-button ${!isPreview ? 'is-active' : ''}`} />
-                    <ToolbarButton icon={image} label={__("Preview")} onClick={() => setIsPreview(true)} className={`components-tab-button ${isPreview ? 'is-active' : ''}`} />
+                    <ToolbarButton icon={edit} label={__("Edit")} onClick={() => {
+                        setIsPreview(false);
+                        setAttributes({ isPreview: false });
+                    }} className={`components-tab-button ${!isPreview ? 'is-active' : ''}`} />
+                    <ToolbarButton icon={image} label={__("Preview")} onClick={() => {
+                        setIsPreview(true);
+                        setAttributes({ isPreview: true });
+                    }} className={`components-tab-button ${isPreview ? 'is-active' : ''}`} />
                 </ToolbarGroup>
             </BlockControls>
 
@@ -158,25 +156,36 @@ export default function Edit({ attributes, setAttributes }) {
                 </div>
             </InspectorControls>
 
-
             {/** 
              *  Block in Edit mode
              */}
             {!isPreview && (
-                <TextareaControl
-                    label={__("p5.js sketch editor")}
-                    //help={__("Enter your p5 sketch")}
-                    value={attributes.sketch}
-                    onChange={(value) => setAttributes({ sketch: value })}
-                    rows="16"
-                />
+                <Placeholder
+                    icon={<Icon
+                        size="10"
+                        icon={ () => (
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'>
+                                <path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' />
+                            </svg>
+                        ) }
+                    />}
+                    label={__("Gutenberg p5.js Block")}>
+                    <TextareaControl
+                        label={__("Sketch Editor")}
+                        help={__("Enter your p5.js code in this field.")}
+                        value={attributes.sketch}
+                        onChange={(value) => setAttributes({ sketch: value })}
+                        rows="16"
+                    />
+                </Placeholder>
             )}
 
             {/** 
              *  Block in Preview mode
              */}
             {(isPreview) && (
-                <div className={`wp-block-p5js gutenbergp5-align-${attributes.alignment}`}>
+                <Placeholder>
+                <div className={`gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`}>
                     <SandBox
                         html={
                             `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
@@ -188,6 +197,7 @@ export default function Edit({ attributes, setAttributes }) {
                         height={frameHeight}
                     />
                 </div>
+                </Placeholder>
             )}
         </div>
     );

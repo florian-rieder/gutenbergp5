@@ -260,17 +260,10 @@ function Edit(_ref) {
     attributes,
     setAttributes
   } = _ref;
-  const onChangeAlignment = newAlignment => {
-    setAttributes({
-      alignment: newAlignment === undefined ? 'none' : newAlignment
-    });
-  };
   const [hasScrollbar, setHasScrollbar] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.hasScrollbar || false);
-  const [isPreview, setIsPreview] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isPreview, setIsPreview] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.isPreview || false);
   const [frameWidth, setWidth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.width);
   const [frameHeight, setHeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.height);
-  //const [isDisabled, setIsDisabled] = useState(true);
-
   const justifyIcons = {
     "left": _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
     "center": _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -308,12 +301,22 @@ function Edit(_ref) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Edit"),
-    onClick: () => setIsPreview(false),
+    onClick: () => {
+      setIsPreview(false);
+      setAttributes({
+        isPreview: false
+      });
+    },
     className: `components-tab-button ${!isPreview ? 'is-active' : ''}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__["default"],
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Preview"),
-    onClick: () => setIsPreview(true),
+    onClick: () => {
+      setIsPreview(true);
+      setAttributes({
+        isPreview: true
+      });
+    },
     className: `components-tab-button ${isPreview ? 'is-active' : ''}`
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
     key: "setting"
@@ -362,24 +365,35 @@ function Edit(_ref) {
       value: '%'
     }],
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("By default, the frame is the size of the canvas.")
-  }))), !isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextareaControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("p5.js sketch editor")
-    //help={__("Enter your p5 sketch")}
-    ,
+  }))), !isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, {
+    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Icon, {
+      size: "10",
+      icon: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 125 114"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+        fill: "#ED225D",
+        d: "M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z"
+      }))
+    }),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Gutenberg p5.js Block")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextareaControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Sketch Editor"),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter your p5.js code in this field."),
     value: attributes.sketch,
     onChange: value => setAttributes({
       sketch: value
     }),
     rows: "16"
-  }), isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `wp-block-p5js gutenbergp5-align-${attributes.alignment}`
+  })), isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SandBox, {
     html: `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` + '<script>' + attributes.sketch + '</script>',
     style: "width:" + attributes.alignment == "wide" ? "100%" : frameWidth + "; height: " + frameHeight + ";" + hasScrollbar ? "" : "overflow:hidden;",
     scrolling: hasScrollbar ? "yes" : "no",
     width: attributes.alignment == "wide" ? "100%" : frameWidth,
     height: frameHeight
-  })));
+  }))));
 }
 
 /***/ }),
@@ -494,9 +508,8 @@ function save(_ref) {
   let {
     attributes
   } = _ref;
-  //const blockProps = useBlockProps.save();
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    className: `wp-block-p5js gutenbergp5-align-${attributes.alignment}`
+    className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`
   });
   const iframeHtml = `
         <!DOCTYPE html>
@@ -512,6 +525,9 @@ function save(_ref) {
             </footer>
         </html>
         `;
+  {/** 
+   *  Block in consultation mode
+   */}
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
     frameBorder: "0",
     srcDoc: iframeHtml,
@@ -523,30 +539,6 @@ function save(_ref) {
     className: attributes.width || attributes.height ? "gutenbergp5-noresize" : ""
   }));
 }
-
-// return <div className={ `gutenbergp5-align-${ attributes.alignment }` }{ ...blockProps }>
-//         <SandBox html={
-//                 '<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>' +
-//                 '<script>' + attributes.sketch + '</script>'
-//             } />
-//     </div>;
-
-// return (
-//     <div className="wp-block-p5js">
-//       <iframe
-//         //title="My iframe"
-//         //width="100%"
-//         //height="400px"
-//         frameBorder="0"
-//         // dangerouslySetInnerHTML={{ __html:
-//         //     '<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>' +
-//         //     '<script>' + attributes.sketch + '</script>'
-//         //   }}
-//         scrolling = {attributes.scrolling}
-//         src={`data:text/html;charset=utf-8,${encodeURIComponent('<!DOCTYPE html><head><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script></head><body><script>' + attributes.sketch + '</script></body></html>')}`}
-//       />
-//     </div>
-//   );
 
 /***/ }),
 
