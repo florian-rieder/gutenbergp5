@@ -161,17 +161,18 @@ export default function Edit({ attributes, setAttributes }) {
              */}
             {!isPreview && (
                 <Placeholder
-                    icon={<Icon
-                        size="10"
-                        icon={ () => (
-                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'>
-                                <path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' />
-                            </svg>
-                        ) }
-                    />}
-                    label={__("Gutenberg p5.js Block")}>
+                    // icon={<Icon
+                    //     size="10"
+                    //     icon={ () => (
+                    //         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'>
+                    //             <path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' />
+                    //         </svg>
+                    //     ) }
+                    // />}
+                    // label={__("Gutenberg p5.js Block")}
+                    >
                     <TextareaControl
-                        label={__("Sketch Editor")}
+                        label={__("p5.js Sketch Editor")}
                         help={__("Enter your p5.js code in this field.")}
                         value={attributes.sketch}
                         onChange={(value) => setAttributes({ sketch: value })}

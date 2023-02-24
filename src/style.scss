@@ -5,8 +5,15 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-p5js {
+ .wp-block-create-block-gutenbergp5{
+    textarea{
+        font-family: monospace;
+    }
+ }
+
+.gutenbergp5-block-p5js {
     width: 100% !important;
+
 
     iframe {
         padding: 0;

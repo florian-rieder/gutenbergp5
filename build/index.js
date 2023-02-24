@@ -365,20 +365,18 @@ function Edit(_ref) {
       value: '%'
     }],
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("By default, the frame is the size of the canvas.")
-  }))), !isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, {
-    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Icon, {
-      size: "10",
-      icon: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 125 114"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-        fill: "#ED225D",
-        d: "M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z"
-      }))
-    }),
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Gutenberg p5.js Block")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextareaControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Sketch Editor"),
+  }))), !isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder
+  // icon={<Icon
+  //     size="10"
+  //     icon={ () => (
+  //         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'>
+  //             <path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' />
+  //         </svg>
+  //     ) }
+  // />}
+  // label={__("Gutenberg p5.js Block")}
+  , null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextareaControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("p5.js Sketch Editor"),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter your p5.js code in this field."),
     value: attributes.sketch,
     onChange: value => setAttributes({
