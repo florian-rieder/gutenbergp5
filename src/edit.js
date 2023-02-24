@@ -26,11 +26,18 @@ import {
     Placeholder,
     ToolbarDropdownMenu,
     __experimentalUnitControl as UnitControl,
-    Icon
 } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
-import { edit, image } from '@wordpress/icons';
+import {
+    edit,
+    image,
+    justifyLeft,
+    justifyCenter,
+    justifyRight,
+    justifyStretch
+} from '@wordpress/icons'
+
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -40,7 +47,6 @@ import { edit, image } from '@wordpress/icons';
  */
 import './editor.scss';
 
-import { justifyLeft, justifyCenter, justifyRight, justifyStretch } from '@wordpress/icons'
 
 
 /**
@@ -56,6 +62,7 @@ export default function Edit({ attributes, setAttributes }) {
     const [isPreview, setIsPreview] = useState(attributes.isPreview || false);
     const [frameWidth, setWidth] = useState(attributes.width);
     const [frameHeight, setHeight] = useState(attributes.height);
+    const [alignmentState, setAlignment] = useState(attributes.alignment)
     const justifyIcons = {
         "left": justifyLeft,
         "center": justifyCenter,
@@ -72,27 +79,39 @@ export default function Edit({ attributes, setAttributes }) {
                 <ToolbarGroup>
                     <ToolbarDropdownMenu
                         icon={justifyIcons[attributes.alignment]}
-                        label="Alignment"
+                        label={__("Alignment")}
                         controls={[
                             {
-                                title: "Left",
+                                title: __('Left'),
                                 icon: justifyLeft,
-                                onClick: () => setAttributes({ alignment: 'left' }),
+                                onClick: () => {
+                                    setAttributes({ alignment: 'left' });
+                                    setAlignment('left');
+                                },
                             },
                             {
-                                title: 'Center',
+                                title: __('Center'),
                                 icon: justifyCenter,
-                                onClick: () => setAttributes({ alignment: 'center' }),
+                                onClick: () => {
+                                    setAttributes({ alignment: 'center' });
+                                    setAlignment('center');
+                                },
                             },
                             {
-                                title: 'Right',
+                                title: __('Right'),
                                 icon: justifyRight,
-                                onClick: () => setAttributes({ alignment: 'right' }),
+                                onClick: () => {
+                                    setAttributes({ alignment: 'right' });
+                                    setAlignment('right');
+                                },
                             },
                             {
-                                title: 'Wide',
+                                title: __('Wide'),
                                 icon: justifyStretch,
-                                onClick: () => setAttributes({ alignment: 'wide' }),
+                                onClick: () => {
+                                    setAttributes({ alignment: 'wide' });
+                                    setAlignment('wide');
+                                },
                             },
                         ]}
                     />
@@ -160,17 +179,7 @@ export default function Edit({ attributes, setAttributes }) {
              *  Block in Edit mode
              */}
             {!isPreview && (
-                <Placeholder
-                    // icon={<Icon
-                    //     size="10"
-                    //     icon={ () => (
-                    //         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'>
-                    //             <path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' />
-                    //         </svg>
-                    //     ) }
-                    // />}
-                    // label={__("Gutenberg p5.js Block")}
-                    >
+                <Placeholder>
                     <TextareaControl
                         label={__("p5.js Sketch Editor")}
                         help={__("Enter your p5.js code in this field.")}
@@ -186,18 +195,18 @@ export default function Edit({ attributes, setAttributes }) {
              */}
             {(isPreview) && (
                 <Placeholder>
-                <div className={`gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`}>
-                    <SandBox
-                        html={
-                            `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
-                            '<script>' + attributes.sketch + '</script>'
-                        }
-                        style={"width:" + attributes.alignment == "wide" ? "100%" : frameWidth + "; height: " + frameHeight + ";" + hasScrollbar ? "" : "overflow:hidden;"}
-                        scrolling={hasScrollbar ? "yes" : "no"}
-                        width={attributes.alignment == "wide" ? "100%" : frameWidth}
-                        height={frameHeight}
-                    />
-                </div>
+                    <div className={`gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`}>
+                        <SandBox
+                            html={
+                                `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
+                                '<script>' + attributes.sketch + '</script>'
+                            }
+                            style={"width:" + alignmentState == "wide" ? "100%" : frameWidth + "; height: " + frameHeight + ";" + hasScrollbar ? "" : "overflow:hidden;"}
+                            scrolling={hasScrollbar ? "yes" : "no"}
+                            width={alignmentState == "wide" ? "100%" : frameWidth}
+                            height={frameHeight}
+                        />
+                    </div>
                 </Placeholder>
             )}
         </div>

@@ -30,7 +30,7 @@ function gutenbergp5_iframe_sizer_enqueue() {
     wp_enqueue_script(
         'gutenbergp5-iframe-sizer',
         plugins_url( '/assets/js/iframe-sizer.js', __FILE__ ),
-        array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
+        array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-dom-ready'),
         '1.0',
         true
     );
