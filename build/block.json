@@ -23,7 +23,7 @@
     },
     "alignment": {
       "type": "string",
-      "default": "none"
+      "default": "center"
     },
     "hasScrollbar": {
       "type": "boolean",
@@ -36,6 +36,10 @@
     "height": {
       "type": "string",
       "default": ""
+    },
+    "isPreview": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
