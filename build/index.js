@@ -148,6 +148,8 @@ function Edit(_ref) {
   };
   const [hasScrollbar, setHasScrollbar] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(attributes.hasScrollbar || false);
   const [isPreview, setIsPreview] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [width, setWidth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(attributes.width);
+  const [height, setHeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(attributes.height);
   //const [isDisabled, setIsDisabled] = useState(true);
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
@@ -170,8 +172,8 @@ function Edit(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     id: "gutenbergp5-controls"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-    label: "Show scroll bar",
-    help: hasScrollbar ? 'Shows the scroll bar' : 'Hides the scroll bar',
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Show scroll bar"),
+    help: hasScrollbar ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Shows the scroll bar') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hides the scroll bar'),
     checked: hasScrollbar,
     onChange: value => {
       setHasScrollbar(value);
@@ -179,9 +181,41 @@ function Edit(_ref) {
         hasScrollbar: value
       });
     }
-  }))), !isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
-    label: "p5.js sketch",
-    help: "Enter your p5 sketch",
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUnitControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Width'),
+    value: width,
+    onChange: value => {
+      setWidth(value);
+      setAttributes({
+        width: value
+      });
+    },
+    units: [{
+      label: 'px',
+      value: 'px'
+    }, {
+      label: '%',
+      value: '%'
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUnitControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Height'),
+    value: height,
+    onChange: value => {
+      setHeight(value);
+      setAttributes({
+        height: value
+      });
+    },
+    units: [{
+      label: 'px',
+      value: 'px'
+    }, {
+      label: '%',
+      value: '%'
+    }]
+  })))), !isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("p5.js sketch"),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Enter your p5 sketch"),
     value: attributes.sketch,
     onChange: value => setAttributes({
       sketch: value
@@ -189,8 +223,10 @@ function Edit(_ref) {
     rows: "16"
   }), isPreview /*|| isDisabled*/ && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SandBox, {
     html: `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` + '<script>' + attributes.sketch + '</script>',
-    style: attributes.hasScrollbar ? "" : "overflow:hidden;",
-    scrolling: attributes.hasScrollbar ? "yes" : "no"
+    style: hasScrollbar ? "" : "overflow:hidden;",
+    scrolling: hasScrollbar ? "yes" : "no",
+    width: width,
+    height: height
   }));
 }
 
@@ -330,6 +366,10 @@ function save(_ref) {
     scrolling: attributes.hasScrollbar ? "yes" : "no" // legacy or sth
     ,
     style: attributes.hasScrollbar ? "" : "overflow:hidden;" // supposedly the new way
+    ,
+    width: attributes.width,
+    height: attributes.height,
+    className: attributes.width || attributes.height ? "gutenbergp5-noresize" : ""
   }));
 }
 
@@ -831,7 +871,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/gutenbergp5","version":"0.1.0","title":"p5.js","category":"formatting","icon":{"src":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 125 114\'><path fill=\'#ED225D\' d=\'M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z\' /></svg>"},"description":"Add custom p5.js code and preview it as you edit.","supports":{"html":false},"textdomain":"gutenbergp5","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"sketch":{"type":"string","default":"function setup() {\\n\\tcreateCanvas(600, 600);\\n}\\n\\nfunction draw() {\\n\\t// Your code here\\n}"},"alignment":{"type":"string","default":"none"},"hasScrollbar":{"type":"boolean","default":false}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/gutenbergp5","version":"0.1.0","title":"p5.js","category":"formatting","icon":{"src":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 125 114\'><path fill=\'#ED225D\' d=\'M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z\' /></svg>"},"description":"Add custom p5.js code and preview it as you edit.","supports":{"html":false},"textdomain":"gutenbergp5","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"sketch":{"type":"string","default":"function setup() {\\n\\tcreateCanvas(600, 600);\\n}\\n\\nfunction draw() {\\n\\t// Your code here\\n}"},"alignment":{"type":"string","default":"none"},"hasScrollbar":{"type":"boolean","default":false},"width":{"type":"string","default":""},"height":{"type":"string","default":""}}}');
 
 /***/ })
 

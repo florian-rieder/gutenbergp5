@@ -15,18 +15,16 @@ import {
     useBlockProps,
     AlignmentToolbar,
     BlockControls,
-    InspectorControls
+    InspectorControls,
 } from '@wordpress/block-editor';
 
 import {
-    Placeholder,
     TextareaControl,
-    TextControl,
     ToggleControl,
     ToolbarGroup,
     ToolbarButton,
     SandBox,
-    Disabled
+    __experimentalUnitControl as UnitControl
 } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
@@ -60,42 +58,71 @@ export default function Edit({ attributes, setAttributes }) {
 
     const [hasScrollbar, setHasScrollbar] = useState(attributes.hasScrollbar || false);
     const [isPreview, setIsPreview] = useState(false);
+    const [width, setWidth] = useState(attributes.width);
+    const [height, setHeight] = useState(attributes.height);
     //const [isDisabled, setIsDisabled] = useState(true);
 
     return (
-        <div {...useBlockProps()} className={ `wp-block-p5js gutenbergp5-align-${ attributes.alignment }` }>
+        <div {...useBlockProps()} className={`wp-block-p5js gutenbergp5-align-${attributes.alignment}`}>
             <BlockControls>
                 <AlignmentToolbar
                     value={attributes.alignment}
                     onChange={onChangeAlignment}
                 />
                 <ToolbarGroup>
-                    <ToolbarButton icon={edit} label="Edit" onClick={() => setIsPreview(false)} className={ `components-tab-button ${ !isPreview ? 'is-active' : '' }` } />
-                    <ToolbarButton icon={image} label="Preview" onClick={() => setIsPreview(true)} className={ `components-tab-button ${ isPreview ? 'is-active' : '' }` }/>
+                    <ToolbarButton icon={edit} label="Edit" onClick={() => setIsPreview(false)} className={`components-tab-button ${!isPreview ? 'is-active' : ''}`} />
+                    <ToolbarButton icon={image} label="Preview" onClick={() => setIsPreview(true)} className={`components-tab-button ${isPreview ? 'is-active' : ''}`} />
                 </ToolbarGroup>
             </BlockControls>
             <InspectorControls key="setting">
                 <div id="gutenbergp5-controls">
                     <ToggleControl
-                        label="Show scroll bar"
+                        label={__("Show scroll bar")}
                         help={
                             hasScrollbar
-                                ? 'Shows the scroll bar'
-                                : 'Hides the scroll bar'
+                                ? __('Shows the scroll bar')
+                                : __('Hides the scroll bar')
                         }
                         checked={hasScrollbar}
                         onChange={(value) => {
                             setHasScrollbar(value);
                             setAttributes({ hasScrollbar: value });
-                            }}
+                        }}
                     />
+                    <div>
+                        <UnitControl
+                            label={__('Width')}
+                            value={width}
+                            onChange={(value) => {
+                                setWidth(value);
+                                setAttributes({ width: value });
+                            }}
+                            units={[
+                                { label: 'px', value: 'px' },
+                                { label: '%', value: '%' },
+                            ]}
+                        />
+                        <UnitControl
+                            label={__('Height')}
+                            value={height}
+                            onChange={(value) => {
+                                setHeight(value);
+                                setAttributes({ height: value });
+                            }
+                            }
+                            units={[
+                                { label: 'px', value: 'px' },
+                                { label: '%', value: '%' },
+                            ]}
+                        />
+                    </div>
                 </div>
             </InspectorControls>
 
             {!isPreview && (
                 <TextareaControl
-                    label="p5.js sketch"
-                    help="Enter your p5 sketch"
+                    label={__("p5.js sketch")}
+                    help={__("Enter your p5 sketch")}
                     value={attributes.sketch}
                     onChange={(value) => setAttributes({ sketch: value })}
                     rows="16"
@@ -103,13 +130,15 @@ export default function Edit({ attributes, setAttributes }) {
             )}
 
             {(isPreview /*|| isDisabled*/) && (
-                <SandBox 
+                <SandBox
                     html={
                         `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
                         '<script>' + attributes.sketch + '</script>'
-                    } 
-                    style={attributes.hasScrollbar ? "" : "overflow:hidden;"} 
-                    scrolling={attributes.hasScrollbar ? "yes" : "no"}
+                    }
+                    style={hasScrollbar ? "" : "overflow:hidden;"}
+                    scrolling={hasScrollbar ? "yes" : "no"}
+                    width={width}
+                    height={height}
                 />
             )}
         </div>
