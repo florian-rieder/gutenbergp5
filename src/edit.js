@@ -198,7 +198,7 @@ export default function Edit({ attributes, setAttributes }) {
                     <div className={`gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`}>
                         <SandBox
                             html={
-                                `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
+                                '<script src="' + window._p5ScriptUrl + '"></script>' +
                                 '<script>' + attributes.sketch + '</script>'
                             }
                             style={"width:" + alignmentState == "wide" ? "100%" : frameWidth + "; height: " + frameHeight + ";" + hasScrollbar ? "" : "overflow:hidden;"}

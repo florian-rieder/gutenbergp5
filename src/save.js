@@ -5,6 +5,8 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from '@wordpress/block-editor';
+import { RawHTML } from '@wordpress/element';
+import { SandBox } from '@wordpress/components';
 
 import he from 'he';
 
@@ -18,39 +20,57 @@ import he from 'he';
  * @return {WPElement} Element to render.
  */
 export default function save({ attributes }) {
-    const blockProps = useBlockProps.save({
-        className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`,
-    });
+    return null;
+    // const blockProps = useBlockProps.save({
+    //     className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`,
+    // });
 
-    const iframeHtml = `
-        <!DOCTYPE html>
-        <html>
-            <head>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-            </head>
-            <body style="padding: 0; margin: 0;"></body>
-            <footer>
-                <script>
-                    ${he.decode(attributes.sketch)}
-                </script>
-            </footer>
-        </html>
-        `;
+    // const htmlContent = `
+    //     <!DOCTYPE html>
+    //     <html>
+    //         <head><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script></head>
+    //         <body style="padding: 0; margin: 0;"></body>
+    //         <script>
+    //             ${he.decode(attributes.sketch)}
+    //         </script>
+    //     </html>
+    //     `;
 
-    {/** 
-    *  Block in consultation mode
-    */}
-    return (
-        <div {...blockProps}>
-            <iframe
-                frameBorder="0"
-                srcDoc={iframeHtml}
-                scrolling={attributes.hasScrollbar ? "yes" : "no"} // legacy or sth
-                style={"width:" + attributes.alignment == "wide" ? "100%" : attributes.width + "; height: " + attributes.height + ";" + attributes.hasScrollbar ? "" : "overflow:hidden;"}
-                width={attributes.alignment == "wide" ? "100%" : attributes.width}
-                height={attributes.height}
-                className={attributes.width || attributes.height ? "gutenbergp5-noresize" : ""}
-            />
-        </div>
-    );
+    // return (
+    //     <RawHTML>
+	// 	<>
+	// 		<SandBox html={ htmlContent }/>
+	// 		{ /*
+	// 			An overlay is added when the block is not selected in order to register click events.
+	// 			Some browsers do not bubble up the clicks from the sandboxed iframe, which makes it
+	// 			difficult to reselect the block.
+	// 		*/ }
+	// 		{/* { ! isSelected && (
+	// 			<div className="block-library-html__preview-overlay"></div>
+	// 		) } */}
+	// 	</>
+    //     </RawHTML>
+	// );
+
+    //
+
+
+
+    // {/** 
+    // *  Block in consultation mode
+    // */}
+    // return (
+    //     <div {...blockProps}>
+    //         <iframe
+    //             sandbox="allow-scripts allow-same-origin allow-presentation"
+    //             frameBorder="0"
+    //             srcDoc={iframeHtml}
+    //             scrolling={attributes.hasScrollbar ? "yes" : "no"} // legacy or sth
+    //             style={"width:" + attributes.alignment == "wide" ? "100%" : attributes.width + "; height: " + attributes.height + ";" + attributes.hasScrollbar ? "" : "overflow:hidden;"}
+    //             width={attributes.alignment == "wide" ? "100%" : attributes.width}
+    //             height={attributes.height}
+    //             className={attributes.width || attributes.height ? "gutenbergp5-noresize" : ""}
+    //         />
+    //     </div>
+    // );
 }
