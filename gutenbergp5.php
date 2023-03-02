@@ -26,6 +26,11 @@ function create_block_gutenbergp5_block_init() {
 }
 add_action( 'init', 'create_block_gutenbergp5_block_init' );
 
+/**
+ * Enqueues the iframe sizer client-side javascript code, which resizes
+ * the iframe to fit the canvas size, except if the iframe has the class
+ * "gutenbergp5-noresize".
+ */
 function gutenbergp5_iframe_sizer_enqueue() {
     wp_enqueue_script(
         'gutenbergp5-iframe-sizer',

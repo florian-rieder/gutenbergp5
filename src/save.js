@@ -45,6 +45,7 @@ export default function save({ attributes }) {
             <iframe
                 frameBorder="0"
                 srcDoc={iframeHtml}
+                sandbox="allow-scripts allow-same-origin allow-presentation"
                 scrolling={attributes.hasScrollbar ? "yes" : "no"} // legacy or sth
                 style={"width:" + attributes.alignment == "wide" ? "100%" : attributes.width + "; height: " + attributes.height + ";" + attributes.hasScrollbar ? "" : "overflow:hidden;"}
                 width={attributes.alignment == "wide" ? "100%" : attributes.width}
