@@ -36,6 +36,15 @@ export default function save({ attributes }) {
             </footer>
         </html>
         `;
+    
+    const width = attributes.alignment == "wide" ? "100%" : attributes.width;
+
+    const widthCSS = `width:${width};`;
+    const heightCSS = `height:${attributes.height};`;
+    const overflowCSS = attributes.hasScrollbar ? "" : "overflow:hidden;";
+    const styles =  widthCSS + heightCSS + overflowCSS
+
+    const iframeClass = attributes.width || attributes.height ? "gutenbergp5-noresize" : "";
 
     {/** 
     *  Block in consultation mode
@@ -47,10 +56,10 @@ export default function save({ attributes }) {
                 srcDoc={iframeHtml}
                 sandbox="allow-scripts allow-same-origin allow-presentation"
                 scrolling={attributes.hasScrollbar ? "yes" : "no"} // legacy or sth
-                style={"width:" + attributes.alignment == "wide" ? "100%" : attributes.width + "; height: " + attributes.height + ";" + attributes.hasScrollbar ? "" : "overflow:hidden;"}
-                width={attributes.alignment == "wide" ? "100%" : attributes.width}
+                style={styles}
+                width={width}
                 height={attributes.height}
-                className={attributes.width || attributes.height ? "gutenbergp5-noresize" : ""}
+                className={iframeClass}
             />
         </div>
     );

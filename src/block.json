@@ -2,9 +2,9 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "gutenbergp5/p5js",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"title": "p5.js",
-	"category": "formatting",
+	"category": "media",
 	"description": "Add custom p5.js code and preview it as you edit.",
 	"supports": {
 		"html": false

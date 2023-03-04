@@ -3,7 +3,7 @@ Contributors: florianrieder
 Tags: p5js, generative art, creative coding, processing, javascript, block
 Requires at least: 6.1
 Tested up to: 6.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,7 @@ A: You can contribute on the [GitHub Repository](https://github.com/florian-ried
 
 == Changelog ==
 
+1.0.1 - Fixed a bug where the canvas sizing would sometimes fail.
 1.0.0 - Released working block with sizing, layout and scrollbar settings.
 
 == Acknowledgements ==

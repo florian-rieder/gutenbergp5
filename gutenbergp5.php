@@ -2,10 +2,10 @@
 /**
  * Plugin Name:       Easy p5.js Block
  * Description:       Adds a Gutenberg block to easily add custom p5.js code in your pages and preview it as you edit.
- * Keywords:          p5js, Generative Art, Creative Coding, Processing, Visual Data, Javascript, Block
+ * Keywords:          p5js, Generative Art, Creative Coding, Processing, Javascript, Block
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Florian Rieder
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
