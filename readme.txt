@@ -13,7 +13,7 @@ Adds a Gutenberg block to easily add custom p5.js code in your pages and preview
 
 This p5.js Gutenberg block plugin is the perfect tool for showcasing your generative art or adding an extra level of visual interest to your website. With p5.js, you can create interactive, dynamic, and customizable visuals that will keep your audience engaged and excited. Whether you're an artist, designer, or developer, this plugin makes it easy to integrate your p5.js sketches into your WordPress website. Impress your visitors with your stunning generative art and take your website to the next level with this p5.js Gutenberg block plugin.
 
-This project uses the p5.js library version 1.6.0, which is free software under the [GPL License](http://p5js.org/copyright.html). Currently, this plugin does not include the `p5.dom.js` or the `p5.sound.js` libraries.
+This project uses the p5.js library version 1.6.0, which is free software under the [GPL License](http://p5js.org/copyright.html). Currently, this plugin does not include the `p5.sound.js` libraries.
 
 
 == Installation ==
