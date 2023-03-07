@@ -1,22 +1,22 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "gutenbergp5/p5js",
-	"version": "1.0.1",
-	"title": "p5.js",
-	"category": "media",
-	"description": "Add custom p5.js code and preview it as you edit.",
-	"supports": {
-		"html": false
-	},
-	"textdomain": "gutenbergp5",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "gutenbergp5/p5js",
+    "version": "1.0.1",
+    "title": "p5.js",
+    "category": "media",
+    "description": "Add custom p5.js code and preview it as you edit.",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "gutenbergp5",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
     "attributes": {
         "sketch": {
             "type": "string",
-            "default": "function setup() {\n\tcreateCanvas(600, 600);\n}\n\nfunction draw() {\n\t// Your code here\n}"
+            "default": "function setup() {\n  createCanvas(600, 600);\n}\n\nfunction draw() {\n  // Your code here\n}"
         },
         "alignment": {
             "type": "string",

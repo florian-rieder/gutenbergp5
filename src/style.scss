@@ -12,7 +12,7 @@
  }
 
 .gutenbergp5-block-p5js {
-    width: 100% !important;
+    width: 100%;
 
     iframe {
         padding: 0;
@@ -37,8 +37,10 @@
 }
 
 .gutenbergp5-align-wide{
-    display: flex;
-    justify-content: stretch;
+    max-width: none !important;
+    width: 100vw;
+    position: relative;
+    left: calc(-50vw + 50%);
 }
 
 #gutenbergp5-controls{

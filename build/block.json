@@ -16,7 +16,7 @@
   "attributes": {
     "sketch": {
       "type": "string",
-      "default": "function setup() {\n\tcreateCanvas(600, 600);\n}\n\nfunction draw() {\n\t// Your code here\n}"
+      "default": "function setup() {\n  createCanvas(600, 600);\n}\n\nfunction draw() {\n  // Your code here\n}"
     },
     "alignment": {
       "type": "string",

@@ -67,7 +67,7 @@ export default function Edit({ attributes, setAttributes }) {
         "left": justifyLeft,
         "center": justifyCenter,
         "right": justifyRight,
-        "wide": justifyStretch
+        "wide": justifyStretch,
     }
 
     return (
@@ -106,7 +106,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 },
                             },
                             {
-                                title: __('Wide'),
+                                title: __('Full width'),
                                 icon: justifyStretch,
                                 onClick: () => {
                                     setAttributes({ alignment: 'wide' });
@@ -156,6 +156,7 @@ export default function Edit({ attributes, setAttributes }) {
                         units={[
                             { label: 'px', value: 'px' },
                             { label: '%', value: '%' },
+                            { label: 'vw', value: 'vw' },
                         ]}
                     />
                     <UnitControl
@@ -169,6 +170,7 @@ export default function Edit({ attributes, setAttributes }) {
                         units={[
                             { label: 'px', value: 'px' },
                             { label: '%', value: '%' },
+                            { label: 'vh', value: 'vh' },
                         ]}
                         help={__("By default, the frame is the size of the canvas.")}
                     />
@@ -201,10 +203,6 @@ export default function Edit({ attributes, setAttributes }) {
                                 `<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>` +
                                 '<script>' + attributes.sketch + '</script>'
                             }
-                            style={"width:" + alignmentState == "wide" ? "100%" : frameWidth + "; height: " + frameHeight + ";" + hasScrollbar ? "" : "overflow:hidden;"}
-                            scrolling={hasScrollbar ? "yes" : "no"}
-                            width={alignmentState == "wide" ? "100%" : frameWidth}
-                            height={frameHeight}
                         />
                     </div>
                 </Placeholder>

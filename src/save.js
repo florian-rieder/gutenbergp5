@@ -22,11 +22,12 @@ export default function save({ attributes }) {
         className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`,
     });
 
+    // HTML
     const iframeHtml = `
         <!DOCTYPE html>
         <html>
             <head>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
             </head>
             <body style="padding: 0; margin: 0;"></body>
             <footer>
@@ -36,13 +37,13 @@ export default function save({ attributes }) {
             </footer>
         </html>
         `;
-    
-    const width = attributes.alignment == "wide" ? "100%" : attributes.width;
 
-    const widthCSS = `width:${width};`;
-    const heightCSS = `height:${attributes.height};`;
+    // Styles
+    const width = attributes.alignment == "wide" ? "100%" : attributes.width;
+    const widthCSS = width ? `width:${width};` : "";
+    const heightCSS = attributes.height ? `height:${attributes.height};` : "";
     const overflowCSS = attributes.hasScrollbar ? "" : "overflow:hidden;";
-    const styles =  widthCSS + heightCSS + overflowCSS
+    const styles = widthCSS + heightCSS + overflowCSS
 
     const iframeClass = attributes.width || attributes.height ? "gutenbergp5-noresize" : "";
 
