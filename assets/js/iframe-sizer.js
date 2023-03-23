@@ -1,8 +1,17 @@
-
 document.querySelectorAll(".gutenbergp5-block-p5js iframe").forEach((frame) => {
-    if (frame.classList.contains("gutenbergp5-noresize")) { return; }
+    if (frame.classList.contains("gutenbergp5-noresize")) return;
     frame.addEventListener('load', function () {
         p5js__resizeIframe(this);
+    });
+});
+
+// let's just double it with the good ol' method to make sure it really resizes 
+// right (the first method has a consistent bug on chromium-based browsers)
+jQuery(document).ready(function () {
+    let p5Iframes = document.querySelectorAll(".gutenbergp5-block-p5js iframe");
+    p5Iframes.forEach((frame) => {
+        if (frame.classList.contains("gutenbergp5-noresize")) return;
+        p5js__resizeIframe(frame);
     });
 });
 
