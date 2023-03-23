@@ -3,7 +3,7 @@
 - Contributors:      Florian Rieder
 - Tags:              p5js, Processing, Generative Art, Creative Coding, Processing, Javascript
 - Tested up to:      6.1
-- Stable tag:        1.1.0
+- Stable tag:        1.1.1
 - License:           GPL-2.0-or-later
 - License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ npm run build
 ![Full width setting](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/screenshot-3.png)
 
 ## Changelog
+
+### 1.1.1
+- Speculative fix for a bug where the canvas sizing would fail on chromium-based browsers.
 
 ### 1.1.0
 
