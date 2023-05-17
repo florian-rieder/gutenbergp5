@@ -1,7 +1,7 @@
 # Gutenbergp5 - Easy p5.js Block
 
 - Contributors:      Florian Rieder
-- Tags:              p5js, Processing, Generative Art, Creative Coding, Processing, Javascript
+- Tags:              p5js, Processing, Generative Art, Creative Coding, Javascript
 - Tested up to:      6.1
 - Stable tag:        1.1.1
 - License:           GPL-2.0-or-later
@@ -26,14 +26,41 @@ This plugin is similar to [Mark Uraine's p5js block](https://wordpress.org/plugi
 
 2. Activate the plugin through the 'Plugins' screen in WordPress
 
+## Usage
+
+1. In the WordPress editor, create or edit a page where you want to add the p5.js block.
+2. Add a new block and search for "p5.js block" or locate it under the "Media" category.
+3. Configure the block settings, including your custom p5.js code.
+4. Preview and publish the page to see your p5.js artwork in action.
+
+
 ## Contribute
 
-```
-npm install
+If you would like to contribute to the development of Gutenbergp5, you are welcome to do so. Follow the instructions below to set up the development environment:
 
+1. Clone the repository:
+
+```bash
+git clone https://github.com/florian-rieder/gutenbergp5.git
+```
+2. Navigate to the plugin directory:
+```bash
+cd gutenbergp5
+```
+3. Install the dependencies:
+```bash
+npm install
+```
+4. Start the development server:
+```bash
 npm run start
+```
+5. Build the plugin files:
+```bash
 npm run build
 ```
+
+Feel free to explore the code, open issues, or submit pull requests to contribute to the improvement of the plugin. Your contributions are greatly appreciated!
 
 ## Screenshots
 
@@ -54,3 +81,7 @@ npm run build
 ### 1.0.0
 
 * Released working block with sizing, layout and scrollbar settings.
+
+## License
+
+Gutenbergp5 is licensed under the [GPL-2.0-or-later](https://www.gnu.org/licenses/gpl-2.0.html) license.

@@ -8,7 +8,8 @@
     }
 
     textarea{
-        font-family: monospace !important;
+        /* See https://stackoverflow.com/questions/38781089 */
+        font-family: monospace, monospace !important;
     }
 }
 
