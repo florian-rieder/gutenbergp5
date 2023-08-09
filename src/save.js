@@ -53,10 +53,8 @@ export default function save({ attributes }) {
     return (
         <div {...blockProps}>
             <iframe
-                frameBorder="0"
                 srcDoc={iframeHtml}
                 sandbox="allow-scripts allow-same-origin allow-presentation"
-                scrolling={attributes.hasScrollbar ? "yes" : "no"} // legacy or sth
                 style={styles}
                 width={width}
                 height={attributes.height}

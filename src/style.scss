@@ -3,8 +3,9 @@
  * and in the editor.
  */
 
-.gutenbergp5-block-p5js {
+.wp-block-gutenbergp5-p5js {
     width: 100%;
+    display: flex;
 
     iframe {
         padding: 0;
@@ -14,17 +15,14 @@
 }
 
 .gutenbergp5-align-left{
-    display: flex;
     justify-content: left;
 }
 
 .gutenbergp5-align-center{
-    display: flex;
     justify-content: center;
 }
 
 .gutenbergp5-align-right{
-    display: flex;
     justify-content: right;
 }
 
