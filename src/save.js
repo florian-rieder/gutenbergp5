@@ -19,24 +19,19 @@ import he from 'he';
  */
 export default function save({ attributes }) {
     const blockProps = useBlockProps.save({
-        className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`,
+        className: `gutenbergp5-align-${attributes.alignment}`,
     });
 
     // HTML
     const iframeHtml = `
         <!DOCTYPE html>
         <html>
-            <head>
-            <script src="${window._p5ScriptUrl}"></script>
-            </head>
             <body style="padding: 0; margin: 0;"></body>
-            <footer>
-                <script>
-                    ${he.decode(attributes.sketch)}
-                </script>
-            </footer>
-        </html>
-        `;
+            <script src="${window._p5ScriptUrl}"></script>
+            <script>
+                ${he.decode(attributes.sketch)}
+            </script>
+        </html>`;
 
     // Styles
     const width = attributes.alignment == "wide" ? "100%" : attributes.width;

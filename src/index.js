@@ -26,23 +26,23 @@ import metadata from './block.json';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( metadata.name, {
+registerBlockType(metadata.name, {
     /**
      * Set block icon to p5.js icon SVG
      */
-    icon : {
+    icon: {
         src: <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125 114'>
             <path fill='#ED225D' d='M75.9,40.4l38.8-11.7l7.6,23.4L83.6,65.3l24,34L87.4,114L62.2,80.6l-24.6,32.5l-19.6-15l24-32.8L3,51.3l7.6-23.5l39.1,12.6V0h26.2L75.9,40.4L75.9,40.4z' />
         </svg>,
     },
 
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
+    /**
+     * @see ./edit.js
+     */
+    edit: Edit,
 
-	/**
-	 * @see ./save.js
-	 */
-	save,
-} );
+    /**
+     * @see ./save.js
+     */
+    save,
+});

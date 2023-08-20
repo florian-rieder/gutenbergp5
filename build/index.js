@@ -511,24 +511,19 @@ function save(_ref) {
     attributes
   } = _ref;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`
+    className: `gutenbergp5-align-${attributes.alignment}`
   });
 
   // HTML
   const iframeHtml = `
         <!DOCTYPE html>
         <html>
-            <head>
-            <script src="${window._p5ScriptUrl}"></script>
-            </head>
             <body style="padding: 0; margin: 0;"></body>
-            <footer>
-                <script>
-                    ${he__WEBPACK_IMPORTED_MODULE_2___default().decode(attributes.sketch)}
-                </script>
-            </footer>
-        </html>
-        `;
+            <script src="${window._p5ScriptUrl}"></script>
+            <script>
+                ${he__WEBPACK_IMPORTED_MODULE_2___default().decode(attributes.sketch)}
+            </script>
+        </html>`;
 
   // Styles
   const width = attributes.alignment == "wide" ? "100%" : attributes.width;

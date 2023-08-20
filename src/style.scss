@@ -3,6 +3,12 @@
  * and in the editor.
  */
 
+// I hope this won't cause problems. Shouldn't, though, right ?
+// Having a horizontal scrollbar for the body is bad design, right ?
+body {
+    overflow-x: hidden;
+}
+
 .wp-block-gutenbergp5-p5js {
     width: 100%;
     display: flex;
@@ -14,26 +20,22 @@
     }
 }
 
-.gutenbergp5-align-left{
+.gutenbergp5-align-left {
     justify-content: left;
 }
 
-.gutenbergp5-align-center{
+.gutenbergp5-align-center {
     justify-content: center;
 }
 
-.gutenbergp5-align-right{
+.gutenbergp5-align-right {
     justify-content: right;
 }
 
-.gutenbergp5-align-wide{
+.gutenbergp5-align-wide {
+    /* https://stackoverflow.com/a/60179933/10914628 */
     max-width: none !important;
     width: 100vw;
     position: relative;
     left: calc(-50vw + 50%);
-    overflow: hidden;
-}
-
-#gutenbergp5-controls{
-    padding: 1em;
 }

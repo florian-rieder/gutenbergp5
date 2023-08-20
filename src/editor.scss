@@ -3,14 +3,16 @@
  */
 
 .wp-block-gutenbergp5-p5js {
-	fieldset.components-placeholder__fieldset{
+    fieldset.components-placeholder__fieldset {
         display: block !important;
     }
 
-    textarea{
+    textarea {
         /* See https://stackoverflow.com/questions/38781089 */
         font-family: monospace, monospace !important;
     }
 }
 
-
+#gutenbergp5-controls {
+    padding: 1em;
+}

@@ -5,6 +5,10 @@
  * The following styles get applied both on the front of your site
  * and in the editor.
  */
+body {
+  overflow-x: hidden;
+}
+
 .wp-block-gutenbergp5-p5js {
   width: 100%;
   display: flex;
@@ -28,15 +32,11 @@
 }
 
 .gutenbergp5-align-wide {
+  /* https://stackoverflow.com/a/60179933/10914628 */
   max-width: none !important;
   width: 100vw;
   position: relative;
   left: calc(-50vw + 50%);
-  overflow: hidden;
-}
-
-#gutenbergp5-controls {
-  padding: 1em;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

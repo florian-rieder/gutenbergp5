@@ -33,7 +33,7 @@ add_action('init', 'gutenbergp5_p5js_block_init');
 /**
  * Pass the p5.min.js library url to the block's editor javascript
  */
-function gutenbergp5_block_editor_assets()
+function gutenbergp5_p5js_block_editor_assets()
 {
     // Enqueue block editor styles and scripts here
     wp_enqueue_script(
@@ -48,7 +48,7 @@ function gutenbergp5_block_editor_assets()
     $script = 'window._p5ScriptUrl = "' . $p5_url . '";';
     wp_add_inline_script('gutenbergp5-p5js-editor-script', $script);
 }
-add_action('enqueue_block_editor_assets', 'gutenbergp5_block_editor_assets');
+add_action('enqueue_block_editor_assets', 'gutenbergp5_p5js_block_editor_assets');
 
 
 /**
@@ -56,7 +56,7 @@ add_action('enqueue_block_editor_assets', 'gutenbergp5_block_editor_assets');
  * the iframe to fit the canvas size, except if the iframe has the class
  * "gutenbergp5-noresize".
  */
-function gutenbergp5_iframe_sizer_enqueue()
+function gutenbergp5_p5js_iframe_sizer_enqueue()
 {
     wp_enqueue_script(
         'gutenbergp5-iframe-sizer',
@@ -66,4 +66,4 @@ function gutenbergp5_iframe_sizer_enqueue()
         true
     );
 }
-add_action('wp_enqueue_scripts', 'gutenbergp5_iframe_sizer_enqueue');
+add_action('wp_enqueue_scripts', 'gutenbergp5_p5js_iframe_sizer_enqueue');

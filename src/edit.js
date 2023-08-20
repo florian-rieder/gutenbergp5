@@ -133,6 +133,10 @@ export default function Edit({ attributes, setAttributes }) {
              */}
             <InspectorControls key="setting">
                 <div id="gutenbergp5-controls">
+                    {/* 
+                        TODO: add the option to choose to include p5.sounds.js
+                              add the option to set the title of the iframe
+                    */}
                     <ToggleControl
                         label={__("Show scroll bar")}
                         help={
