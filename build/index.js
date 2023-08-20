@@ -391,11 +391,9 @@ function Edit(_ref) {
       sketch: value
     }),
     rows: "16"
-  })), isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SandBox, {
+  })), isPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SandBox, {
     html: `<script src="` + window._p5ScriptUrl + `"></script>` + '<script>' + attributes.sketch + '</script>'
-  }))));
+  })));
 }
 
 /***/ }),

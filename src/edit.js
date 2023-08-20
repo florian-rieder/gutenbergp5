@@ -201,14 +201,12 @@ export default function Edit({ attributes, setAttributes }) {
              */}
             {(isPreview) && (
                 <Placeholder>
-                    <div className={`gutenbergp5-block-p5js gutenbergp5-align-${attributes.alignment}`}>
-                        <SandBox
-                            html={
-                                `<script src="` + window._p5ScriptUrl + `"></script>` +
-                                '<script>' + attributes.sketch + '</script>'
-                            }
-                        />
-                    </div>
+                    <SandBox
+                        html={
+                            `<script src="` + window._p5ScriptUrl + `"></script>` +
+                            '<script>' + attributes.sketch + '</script>'
+                        }
+                    />
                 </Placeholder>
             )}
         </div>
