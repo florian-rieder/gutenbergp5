@@ -2,8 +2,8 @@
 Contributors: florianrieder
 Tags: p5js, generative art, creative coding, processing, javascript, block
 Requires at least: 6.1
-Tested up to: 6.1
-Stable tag: 1.1.1
+Tested up to: 6.3
+Stable tag: 1.2.0
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ A: You can contribute on the [GitHub Repository](https://github.com/florian-ried
 3. Create full width sketches using the "Full width" alignment setting and `createCanvas(windowWidth, windowHeight)`
 
 == Changelog ==
+
+1.2.0
+- Fixed overflow with full width option.
 
 1.1.1
 - Speculative fix for a bug where the canvas sizing would fail on chromium-based browsers.

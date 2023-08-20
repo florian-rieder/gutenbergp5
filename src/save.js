@@ -27,7 +27,7 @@ export default function save({ attributes }) {
         <!DOCTYPE html>
         <html>
             <head>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="${window._p5ScriptUrl}"></script>
             </head>
             <body style="padding: 0; margin: 0;"></body>
             <footer>
@@ -55,10 +55,12 @@ export default function save({ attributes }) {
             <iframe
                 srcDoc={iframeHtml}
                 sandbox="allow-scripts allow-same-origin allow-presentation"
+                scrolling={attributes.hasScrollbar ? "yes" : "no"} // deprecated or sth ???
                 style={styles}
                 width={width}
                 height={attributes.height}
                 className={iframeClass}
+                title="p5.js canvas"
             />
         </div>
     );
