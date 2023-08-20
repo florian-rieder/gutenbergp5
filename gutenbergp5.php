@@ -5,7 +5,7 @@
  * Keywords:          p5js, Generative Art, Creative Coding, Processing, Javascript, Block
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           1.2.0
+ * Version:           1.1.2
  * Author:            Florian Rieder
  * Author URI:        https://florianrieder.com
  * License:           GPL-2.0-or-later
@@ -16,6 +16,23 @@
  */
 
 
+/**
+ * Registers the block using the metadata loaded from the `block.json` file.
+ * Behind the scenes, it registers also all assets so they can be enqueued
+ * through the block editor in the corresponding context.
+ *
+ * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ */
+function gutenbergp5_p5js_block_init()
+{
+    register_block_type(__DIR__ . '/build');
+}
+add_action('init', 'gutenbergp5_p5js_block_init');
+
+
+/**
+ * Pass the p5.min.js library url to the block's editor javascript
+ */
 function gutenbergp5_block_editor_assets()
 {
     // Enqueue block editor styles and scripts here
@@ -50,17 +67,3 @@ function gutenbergp5_iframe_sizer_enqueue()
     );
 }
 add_action('wp_enqueue_scripts', 'gutenbergp5_iframe_sizer_enqueue');
-
-
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function gutenbergp5_p5js_block_init()
-{
-    register_block_type(__DIR__ . '/build');
-}
-add_action('init', 'gutenbergp5_p5js_block_init');

@@ -999,7 +999,7 @@ module.exports = window["wp"]["primitives"];
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"gutenbergp5/p5js","version":"1.0.1","title":"p5.js","category":"media","description":"Add custom p5.js code and preview it as you edit.","supports":{"html":false},"textdomain":"gutenbergp5","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"sketch":{"type":"string","default":"function setup() {\\n  createCanvas(600, 600);\\n}\\n\\nfunction draw() {\\n  // Your code here\\n}"},"alignment":{"type":"string","default":"center"},"hasScrollbar":{"type":"boolean","default":false},"width":{"type":"string","default":""},"height":{"type":"string","default":""},"isPreview":{"type":"boolean","default":false}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"gutenbergp5/p5js","version":"1.1.2","title":"p5.js","category":"media","description":"Add custom p5.js code and preview it as you edit.","supports":{"html":false},"textdomain":"gutenbergp5","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"sketch":{"type":"string","default":"function setup() {\\n  createCanvas(600, 600);\\n}\\n\\nfunction draw() {\\n  // Your code here\\n}"},"alignment":{"type":"string","default":"center"},"hasScrollbar":{"type":"boolean","default":false},"width":{"type":"string","default":""},"height":{"type":"string","default":""},"isPreview":{"type":"boolean","default":false}}}');
 
 /***/ })
 

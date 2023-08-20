@@ -3,7 +3,7 @@ Contributors: florianrieder
 Tags: p5js, generative art, creative coding, processing, javascript, block
 Requires at least: 6.1
 Tested up to: 6.3
-Stable tag: 1.2.0
+Stable tag: 1.1.2
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
