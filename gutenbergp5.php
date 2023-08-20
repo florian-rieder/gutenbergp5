@@ -38,13 +38,13 @@ function gutenbergp5_p5js_block_editor_assets()
     // Enqueue block editor styles and scripts here
     wp_enqueue_script(
         'gutenbergp5-p5js-editor-script',
-        plugins_url('gutenbergp5/build/index.js', dirname(__FILE__)),
+        plugin_dir_url(__FILE__) . '/build/index.js',
         array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'),
         '1.0',
         true
     );
 
-    $p5_url = plugins_url('gutenbergp5/assets/js/p5.min.js', dirname(__FILE__));
+    $p5_url = plugin_dir_url(__FILE__) . '/assets/js/p5.min.js';
     $script = 'window._p5ScriptUrl = "' . $p5_url . '";';
     wp_add_inline_script('gutenbergp5-p5js-editor-script', $script);
 }
