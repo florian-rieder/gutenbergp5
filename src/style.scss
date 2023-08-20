@@ -3,12 +3,6 @@
  * and in the editor.
  */
 
-// I hope this won't cause problems. Shouldn't, though, right ?
-// Having a horizontal scrollbar for the body is bad design, right ?
-body {
-    overflow-x: hidden;
-}
-
 .wp-block-gutenbergp5-p5js {
     width: 100%;
     display: flex;

@@ -43,6 +43,14 @@ Warning : when using `windowHeight`, the preview won't work. You can fix this by
 
 A: To achieve this effect, select the "Full width" alignment option in the block's toolbar, and use `createCanvas(windowWidth, windowHeight)` in your script. Don't forget to set the height of your canvas in the block settings panel. The width setting will be ignored.
 
+A horizontal scroll bar can appear in pages using full width alignment. To fix it, you can add this CSS to your site's custom CSS:
+
+```css
+body {
+    overflow-x: hidden;
+}
+```
+
 = Q: Where can I contribute to the project? =
 
 A: You can contribute on the [GitHub Repository](https://github.com/florian-rieder/gutenbergp5) of this plugin.
