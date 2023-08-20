@@ -75,6 +75,8 @@ Feel free to explore the code, open issues, or submit pull requests to contribut
 * Moved p5.js dependency to a local asset instead of using a CDN link.
 * Updated p5.js to 1.7.0.
 * Fixed horizontal overflow with full width option.
+* Fixed preview overflow issues.
+* Improved canvas auto-sizing.
 
 ### 1.1.1
 * Speculative fix for a bug where the canvas sizing would fail on chromium-based browsers.

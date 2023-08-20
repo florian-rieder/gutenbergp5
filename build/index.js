@@ -535,7 +535,7 @@ function save(_ref) {
    */}
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
     srcDoc: iframeHtml,
-    sandbox: "allow-scripts allow-same-origin allow-presentation",
+    sandbox: "allow-scripts allow-same-origin",
     scrolling: attributes.hasScrollbar ? "yes" : "no" // deprecated or sth ???
     ,
     style: styles,

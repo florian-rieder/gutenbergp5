@@ -49,7 +49,7 @@ export default function save({ attributes }) {
         <div {...blockProps}>
             <iframe
                 srcDoc={iframeHtml}
-                sandbox="allow-scripts allow-same-origin allow-presentation"
+                sandbox="allow-scripts allow-same-origin"
                 scrolling={attributes.hasScrollbar ? "yes" : "no"} // deprecated or sth ???
                 style={styles}
                 width={width}

@@ -33,7 +33,7 @@ A: No ! Just activate the plugin and add the p5.js block to any page or post to 
 
 = Q: How should I size my canvas with this plugin ? =
 
-A: You can define a fixed size for the canvas in your script using for example `createCanvas(600, 400)`. In this case, the size of the block will adapt to the canvas size. Alternatively, you can dynamically size it to fit the container using `createCanvas(windowWidth, windowHeight)`, and defining the size of the block in its setting panel.
+A: It is recommended to define the height and width of your block in the block settings panel, and use `createCanvas(windowWidth, windowHeight)` to ensure that your sketche's sizing is responsive. However, you can define a fixed size for the canvas in your script using for example `createCanvas(600, 400)`. In this case, the size of the block will adapt to the canvas size defined in the script automatically, unless the size of the block has been defined in its setting panel.
 
 In order for your sketch to be rendered properly when using `createCanvas(windowWidth, windowHeight)`, it is important to remember that in the context of the p5.js block, the variables `windowWidth` and `windowHeight` refer to the width and height of the block. When using dynamic sizing in your script, define the desired height and width of your canvas in the block settings panel.
 
@@ -57,16 +57,22 @@ A: You can contribute on the [GitHub Repository](https://github.com/florian-ried
 == Changelog ==
 
 1.1.2
+
 - Moved p5.js dependency to a local asset instead of using a CDN link.
 - Updated p5.js to 1.7.0.
 - Fixed horizontal overflow with full width option.
+- Fixed preview overflow issues.
+- Improved canvas auto-sizing.
 
 1.1.1
+
 - Speculative fix for a bug where the canvas sizing would fail on chromium-based browsers.
 
 1.1.0
+
 - Added a "Full width" alignment option.
 - Fixed a bug where the canvas sizing would sometimes fail.
 
-1.0.0 
+1.0.0
+
 - Released working block with sizing, layout and scrollbar settings.
