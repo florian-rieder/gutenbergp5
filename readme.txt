@@ -58,7 +58,8 @@ A: You can contribute on the [GitHub Repository](https://github.com/florian-ried
 
 1.1.2
 - Moved p5.js dependency to a local asset instead of using a CDN link.
-- Fixed overflow with full width option.
+- Updated p5.js to 1.7.0.
+- Fixed horizontal overflow with full width option.
 
 1.1.1
 - Speculative fix for a bug where the canvas sizing would fail on chromium-based browsers.
