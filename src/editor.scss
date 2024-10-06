@@ -3,8 +3,8 @@
  */
 
 .wp-block-gutenbergp5-p5js {
-    fieldset.components-placeholder__fieldset {
-        display: block !important;
+    .components-placeholder__fieldset .components-base-control {
+        width: 100%; /* Fix width of text area */
     }
 
     textarea {
