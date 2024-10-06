@@ -2,7 +2,7 @@
 Contributors: florianrieder
 Tags: p5js, generative art, creative coding, processing, javascript, block
 Requires at least: 6.1
-Tested up to: 6.3
+Tested up to: 6.6
 Stable tag: 1.1.2
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,6 +12,8 @@ Adds a Gutenberg block to easily add custom p5.js code in your pages and preview
 == Description ==
 
 This p5.js Gutenberg block plugin is the perfect tool for showcasing your generative art or adding an extra level of visual interest to your website. With [p5.js](https://p5js.org/), you can create interactive, dynamic, and customizable visuals that will keep your audience engaged and excited. Whether you're an artist, designer, or developer, this plugin makes it easy to integrate your p5.js sketches into your WordPress website. Impress your visitors with your stunning generative art and take your website to the next level with this p5.js Gutenberg block plugin.
+
+[Try it out on a free dummy site now !](https://tastewp.org/plugins/easy-p5-js-block/)
 
 == Acknowledgements ==
 
@@ -33,7 +35,7 @@ A: No ! Just activate the plugin and add the p5.js block to any page or post to 
 
 = Q: How should I size my canvas with this plugin ? =
 
-A: It is recommended to define the height and width of your block in the block settings panel, and use `createCanvas(windowWidth, windowHeight)` to ensure that your sketche's sizing is responsive. However, you can define a fixed size for the canvas in your script using for example `createCanvas(600, 400)`. In this case, the size of the block will adapt to the canvas size defined in the script automatically, unless the size of the block has been defined in its setting panel.
+A: It is highly recommended to define the height and width of your block in the block settings panel, and use `createCanvas(windowWidth, windowHeight)` to ensure that your sketche's sizing is responsive. However, you can define a fixed size for the canvas in your script using for example `createCanvas(600, 400)`. In this case, the size of the block will adapt to the canvas size defined in the script automatically, unless the size of the block has been defined in its setting panel.
 
 In order for your sketch to be rendered properly when using `createCanvas(windowWidth, windowHeight)`, it is important to remember that in the context of the p5.js block, the variables `windowWidth` and `windowHeight` refer to the width and height of the block. When using dynamic sizing in your script, define the desired height and width of your canvas in the block settings panel.
 
@@ -67,7 +69,7 @@ A: You can contribute on the [GitHub Repository](https://github.com/florian-ried
 1.1.2
 
 - Moved p5.js dependency to a local asset instead of using a CDN link.
-- Updated p5.js to 1.7.0.
+- Updated p5.js to 1.11.0.
 - Fixed horizontal overflow with full width option.
 - Fixed preview overflow issues.
 - Improved canvas auto-sizing.

@@ -2,7 +2,7 @@
 
 - Contributors:      Florian Rieder
 - Tags:              p5js, Processing, Generative Art, Creative Coding, Javascript
-- Tested up to:      6.3
+- Tested up to:      6.6
 - Stable tag:        1.1.2
 - License:           GPL-2.0-or-later
 - License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -10,6 +10,8 @@
 Adds a Gutenberg block to add custom p5.js code in your pages and preview it as you edit.
 
 Find this plugin in the [Wordpress Plugin Directory](https://wordpress.org/plugins/easy-p5-js-block/).
+
+[Try it out on a free dummy site now !](https://tastewp.org/plugins/easy-p5-js-block/)
 
 ## Description
 
