@@ -21,7 +21,7 @@ This p5.js Gutenberg block plugin is the perfect tool for showcasing your genera
 ## Acknowledgements
 This plugin is similar to [Mark Uraine's p5js block](https://wordpress.org/plugins/wp-p5js-block/), and is in fact reverse engineered from it, although very little of the actual code is reused (see [mapk/p5js-block](https://github.com/mapk/p5js-block), and his [blog post about his plugin](https://markuraine.com/creating-the-p5-js-gutenberg-block/)). I was prompted to develop this plugin due to encountering bugs, lack of display options, and mostly the lack of updates and support for this original plugin. I feel like it should be easier to insert p5.js artworks into Wordpress websites and blogs, and this is my contribution to it (although it may be buggy, I try my best. Feel free to open an issue or a pull request).
 
-This project uses the p5.js library version 1.7.0, which is free software under the [GPL License](http://p5js.org/copyright.html). Currently, this plugin does not include the `p5.sound.js` libraries.
+This project uses the p5.js library version 1.11.0, which is free software under the [GPL License](http://p5js.org/copyright.html). Currently, this plugin does not include the `p5.sound.js` libraries.
 
 ## Installation
 
@@ -75,7 +75,7 @@ Feel free to explore the code, open issues, or submit pull requests to contribut
 
 ### 1.1.2
 * Moved p5.js dependency to a local asset instead of using a CDN link.
-* Updated p5.js to 1.7.0.
+* Updated p5.js to 1.11.0.
 * Fixed horizontal overflow with full width option.
 * Fixed preview overflow issues.
 * Improved canvas auto-sizing.
