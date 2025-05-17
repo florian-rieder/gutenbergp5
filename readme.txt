@@ -1,8 +1,8 @@
 === Easy p5.js Block ===
 Contributors: florianrieder
-Tags: p5js, generative art, creative coding, processing, javascript, block
+Tags: p5js, generative art, creative coding, processing, javascript
 Requires at least: 6.1
-Tested up to: 6.6
+Tested up to: 6.8
 Stable tag: 1.1.2
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

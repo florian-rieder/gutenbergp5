@@ -39,7 +39,9 @@ This project uses the p5.js library version 1.11.0, which is free software under
 
 ## Contribute
 
-If you would like to contribute to the development of Gutenbergp5, you are welcome to do so. Follow the instructions below to set up the development environment:
+If you would like to contribute to the development of Gutenbergp5, you are welcome to do so.
+The development environment uses Docker and docker-compose, so make sure you have it installed on your machine.
+Follow the instructions below to set up the development environment:
 
 1. Clone the repository:
 
@@ -50,18 +52,11 @@ git clone https://github.com/florian-rieder/gutenbergp5.git
 ```bash
 cd gutenbergp5
 ```
-3. Install the dependencies:
+3. Install and launch the development environment using docker-compose:
 ```bash
-npm install
+docker-compose up
 ```
-4. Start the development server:
-```bash
-npm run start
-```
-5. Build the plugin files:
-```bash
-npm run build
-```
+4. Open your browser and go to [http://localhost:8000](http://localhost:8000)
 
 Feel free to explore the code, open issues, or submit pull requests to contribute to the improvement of the plugin. Your contributions are greatly appreciated!
 

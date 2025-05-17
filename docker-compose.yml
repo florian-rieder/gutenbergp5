@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress_db
+    volumes:
+      - .:/var/www/html/wp-content/plugins/gutenbergp5
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  builder:
+    image: node:18
+    working_dir: /gutenbergp5
+    volumes:
+      - .:/gutenbergp5
+    command: sh -c "npm install && npm run start"
+
+volumes:
+  db_data:
