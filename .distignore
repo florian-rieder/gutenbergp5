@@ -1,6 +1,7 @@
 # Files excluded from the plugin zip, which is also what ships to WordPress.org.
 # Used to package the plugin zip, see .github/workflows/release-draft.yml
 /.git
+/.claude
 /.github
 /.wordpress-org
 /bin

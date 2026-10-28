@@ -60,6 +60,18 @@ docker-compose up
 
 Feel free to explore the code, open issues, or submit pull requests to contribute to the improvement of the plugin. Your contributions are greatly appreciated!
 
+## Releasing
+
+1. Run `/release-notes` in Claude Code. It proposes the next version and writes the changelog entry in `readme.txt` and `readme.md`. Review it.
+2. Commit the changelog, bump the version (this commits and tags), then push. `npm version` refuses to run while tracked files have uncommitted changes, so the changelog has to be committed first:
+```bash
+git commit -m "docs: changelog for <version>" readme.txt readme.md
+npm version <version>
+git push --follow-tags
+```
+3. On GitHub, open the draft release that the tag created. Check the notes and the attached zip.
+4. Click **Publish release**. This deploys the zip to WordPress.org. Pre-releases stay on GitHub only.
+
 ## Screenshots
 
 ![Edit mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/.wordpress-org/screenshot-1.png)
