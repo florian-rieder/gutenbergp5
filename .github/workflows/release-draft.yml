@@ -1,0 +1,56 @@
+name: Draft release
+
+# Push a version tag (e.g. 1.1.3 or v1.1.3) to build the plugin and create a
+# draft GitHub release with the zip and this version's changelog entry.
+# Publishing the draft deploys it to WordPress.org, see release-publish.yml.
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check that version numbers match the tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          fail=0
+          grep -Eq "^ \* Version:\s+${VERSION}$" gutenbergp5.php || { echo "::error file=gutenbergp5.php::Plugin header Version is not ${VERSION}"; fail=1; }
+          grep -Eq "^Stable tag:\s+${VERSION}$" readme.txt || { echo "::error file=readme.txt::Stable tag is not ${VERSION}"; fail=1; }
+          grep -Eq "^${VERSION}$" readme.txt || { echo "::error file=readme.txt::No changelog entry for ${VERSION}"; fail=1; }
+          exit $fail
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Package plugin
+        run: |
+          # Same file selection as the WordPress.org deploy
+          mkdir -p dist/easy-p5-js-block
+          rsync -rc --exclude-from=.distignore ./ dist/easy-p5-js-block/
+          cd dist && zip -qr easy-p5-js-block.zip easy-p5-js-block
+
+      - name: Create draft GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Use this version's changelog entry from readme.txt as release notes
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v v="$VERSION" '
+            $0 == v { found = 1; next }
+            found && (/^[0-9]+\.[0-9]+\.[0-9]+$/ || /^== /) { exit }
+            found { print }
+          ' readme.txt > dist/notes.md
+          gh release create "$GITHUB_REF_NAME" dist/easy-p5-js-block.zip --draft --title "$GITHUB_REF_NAME" --notes-file dist/notes.md

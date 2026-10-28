@@ -1,0 +1,35 @@
+name: Publish release
+
+# Publishing a GitHub release (see release-draft.yml) deploys its zip to the
+# WordPress.org SVN repository, so what was reviewed is exactly what ships.
+# Requires the SVN_USERNAME and SVN_PASSWORD repository secrets.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    # Pre-releases (e.g. 1.2.0-beta.1) stay on GitHub only
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    steps:
+      # Needed for the WordPress.org assets in .wordpress-org
+      - uses: actions/checkout@v7
+
+      - name: Download release zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$GITHUB_REF_NAME" --pattern easy-p5-js-block.zip --dir dist
+          unzip -q dist/easy-p5-js-block.zip -d dist
+
+      - name: Deploy to WordPress.org
+        uses: 10up/action-wordpress-plugin-deploy@2.3.0
+        env:
+          SLUG: easy-p5-js-block
+          BUILD_DIR: dist/easy-p5-js-block
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

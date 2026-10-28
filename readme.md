@@ -62,9 +62,9 @@ Feel free to explore the code, open issues, or submit pull requests to contribut
 
 ## Screenshots
 
-![Edit mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/screenshot-1.png)
-![Preview mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/screenshot-2.png)
-![Full width setting](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/assets/screenshot-3.png)
+![Edit mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/.wordpress-org/screenshot-1.png)
+![Preview mode](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/.wordpress-org/screenshot-2.png)
+![Full width setting](https://raw.githubusercontent.com/florian-rieder/gutenbergp5/master/.wordpress-org/screenshot-3.png)
 
 ## Changelog
 

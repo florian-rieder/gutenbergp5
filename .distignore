@@ -1,0 +1,20 @@
+# Files excluded from the plugin zip, which is also what ships to WordPress.org.
+# Used to package the plugin zip, see .github/workflows/release-draft.yml
+/.git
+/.github
+/.wordpress-org
+/bin
+/node_modules
+/src
+/build/*.map
+/dist
+.distignore
+.editorconfig
+.gitignore
+.DS_Store
+docker-compose.yml
+package.json
+package-lock.json
+readme.md
+LICENSE
+.npmrc
