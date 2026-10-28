@@ -40,7 +40,7 @@ This project uses the p5.js library version 1.11.0, which is free software under
 ## Contribute
 
 If you would like to contribute to the development of Gutenbergp5, you are welcome to do so.
-The development environment uses Docker and docker-compose, so make sure you have it installed on your machine.
+The development environment uses [wp-env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/), which requires Docker and Node.js.
 Follow the instructions below to set up the development environment:
 
 1. Clone the repository:
@@ -48,15 +48,22 @@ Follow the instructions below to set up the development environment:
 ```bash
 git clone https://github.com/florian-rieder/gutenbergp5.git
 ```
-2. Navigate to the plugin directory:
+2. Navigate to the plugin directory and install the dependencies:
 ```bash
 cd gutenbergp5
+npm install
 ```
-3. Install and launch the development environment using docker-compose:
+3. Start WordPress with the plugin mounted and activated:
 ```bash
-docker-compose up
+npm run env:start
 ```
-4. Open your browser and go to [http://localhost:8000](http://localhost:8000)
+4. In another terminal, build the block and rebuild on changes:
+```bash
+npm start
+```
+5. Open your browser and go to [http://localhost:8888](http://localhost:8888) (log in at `/wp-admin` with `admin` / `password`).
+
+Stop the environment with `npm run env:stop`, or remove it entirely with `npm run env:destroy`. To change ports or the WordPress version locally, create a `.wp-env.override.json`.
 
 Feel free to explore the code, open issues, or submit pull requests to contribute to the improvement of the plugin. Your contributions are greatly appreciated!
 
