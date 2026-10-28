@@ -1,0 +1,39 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"plugins": [
+		"easy-p5-js-block"
+	],
+	"preferredVersions": {
+		"php": "latest",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"login": true,
+	"landingPage": "/wp-admin/post-new.php",
+	"steps": [
+		{
+			"step": "updateUserMeta",
+			"meta": {
+				"admin_color": "modern",
+				"wp_persisted_preferences": {
+					"core/edit-post": {
+						"welcomeGuide": false
+					},
+					"_modified": "2026-10-28T00:00:00.000Z"
+				}
+			},
+			"userId": 1
+		},
+		{
+			"step": "mkdir",
+			"path": "/wordpress/wp-content/mu-plugins"
+		},
+		{
+			"step": "writeFile",
+			"path": "/wordpress/wp-content/mu-plugins/gutenbergp5-demo.php",
+			"data": "<?php\n/**\n * Playground demo: open new posts with an example p5.js block.\n * Created by .wordpress-org/blueprints/blueprint.json, not part of the plugin.\n *\n * The block comes from a post template rather than post content because its\n * saved markup contains the p5.js URL, which differs on every Playground\n * instance. The editor creates template blocks itself, so they stay valid.\n */\nconst GUTENBERGP5_DEMO_SKETCH = <<<'SKETCH'\nconst columns = 12;\nconst rows = 22;\nconst translationMultiplier = 1/2;\nconst rotationMultiplier = 1/100;\n\nfunction setup() {\n\tcreateCanvas(windowWidth, 700);\n\tnoFill();\n\t// compute square size based on canvas size and margin\n\tlet margin = height * 8/100; // margin of 8% on each side\n\tsquareSize = (height-margin*2)/rows;\n\n\tdrawSchotter();\n}\n\nfunction mousePressed(){\n\tdrawSchotter();\n}\n\nfunction drawSchotter(){\n\tbackground(255);\n\tpush()\n\t// translate to the upper corner of the grid, so that it will be centered\n\ttranslate(width/2-(columns*squareSize)/2, height/2-(rows*squareSize)/2);\n\t\n\tfor (let i = 1; i <= columns; i++){\n\t\tfor (let j = 1; j <= rows; j++){\n\t\t\tpush();\n\t\t\t// get position of the upper left corner of the square\n\t\t\tconst x = (i-1) * squareSize;\n\t\t\tconst y = (j-1) * squareSize;\n\t\t\t// get the position of the center of the square and offset it\n\t\t\tconst displacement = j*translationMultiplier;\n\t\t\tconst cx = x + squareSize/2 + random(-displacement, displacement);\n\t\t\tconst cy = y + squareSize/2 + random(-displacement, displacement);\n\t\t\t// rotate the square around its center (cx, cy)\n\t\t\ttranslate(cx, cy);\n\t\t\tconst rotation = j * rotationMultiplier * random(-PI, PI);\n\t\t\trotate(rotation);\n\t\t\t// draw the square around its center\n\t\t\tsquare(-squareSize/2, -squareSize/2, squareSize);\n\t\t\tpop();\n\t\t}\n\t}\n\tpop()\n}\nSKETCH;\n\nadd_filter( 'register_post_type_args', function ( $args, $post_type ) {\n\tif ( 'post' === $post_type ) {\n\t\t$args['template'] = array(\n\t\t\tarray( 'gutenbergp5/p5js', array(\n\t\t\t\t'sketch'    => GUTENBERGP5_DEMO_SKETCH,\n\t\t\t\t'width'     => '100%',\n\t\t\t\t'height'    => '700px',\n\t\t\t\t'isPreview' => true,\n\t\t\t) ),\n\t\t);\n\t}\n\treturn $args;\n}, 10, 2 );\n\nadd_filter( 'default_title', function () {\n\treturn 'Schotter, after Georg Nees';\n} );\n\n/*\n * Playground answers requests through a service worker, but the srcdoc iframes\n * of the block bypass it, so the bundled p5.min.js 404s. Load the same p5.js\n * version from a CDN instead, in this demo only.\n */\nadd_action( 'enqueue_block_editor_assets', function () {\n\twp_add_inline_script(\n\t\t'gutenbergp5-p5js-editor-script',\n\t\t'window._p5ScriptUrl = \"https://cdn.jsdelivr.net/npm/p5@1.11.0/lib/p5.min.js\";'\n\t);\n}, 20 );\n"
+		}
+	]
+}
