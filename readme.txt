@@ -2,7 +2,7 @@
 Contributors: florianrieder
 Tags: p5js, generative art, creative coding, processing, javascript
 Requires at least: 6.1
-Tested up to: 6.8
+Tested up to: 7.1
 Stable tag: 1.1.2
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -65,6 +65,10 @@ A: You can contribute on the [GitHub Repository](https://github.com/florian-ried
 3. Create full width sketches using the "Full width" alignment setting and `createCanvas(windowWidth, windowHeight)`
 
 == Changelog ==
+
+1.1.3
+
+- Tested with WordPress 7.1.
 
 1.1.2
 
