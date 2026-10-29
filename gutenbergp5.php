@@ -5,7 +5,7 @@
  * Keywords:          p5js, Generative Art, Creative Coding, Processing, Javascript, Block
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Florian Rieder
  * Author URI:        https://florianrieder.com
  * License:           GPL-2.0-or-later
