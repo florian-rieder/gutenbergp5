@@ -34,3 +34,7 @@ node_modules/
 build/
 dist/
 .wp-env.override.json
+
+# Playwright e2e tests
+artifacts/
+playwright-report/

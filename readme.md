@@ -58,6 +58,20 @@ npm start
 
 Stop the environment with `npm run env:stop`, or remove it entirely with `npm run env:destroy`. To change ports or the WordPress version locally, create a `.wp-env.override.json`.
 
+### Tests
+
+End-to-end tests in `tests/e2e` check the block in the editor, its preview, and the published post, on Chromium, Firefox and WebKit. They use [Playwright](https://playwright.dev) and run against the separate test site that `npm run env:start` also starts at [http://localhost:8889](http://localhost:8889). They run on GitHub Actions for every push to `master` and every pull request.
+
+```bash
+npx playwright install            # once, downloads the browsers
+npm run build                     # the tests use the built block
+npm run test:e2e                  # all browsers
+npm run test:e2e -- --project=firefox
+npm run test:e2e:ui               # interactive runner, to debug a test
+```
+
+After a failure, `npx playwright show-report` opens the report with screenshots, videos and traces.
+
 Feel free to explore the code, open issues, or submit pull requests to contribute to the improvement of the plugin. Your contributions are greatly appreciated!
 
 ## Releasing
