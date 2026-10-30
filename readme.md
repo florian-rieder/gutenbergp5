@@ -1,5 +1,7 @@
 # Gutenbergp5 - Easy p5.js Block
 
+<img src=".wordpress-org/screenshot-1.png">
+
 Adds a Gutenberg block to add custom p5.js code in your pages and preview it as you edit.
 
 Find this plugin in the [Wordpress Plugin Directory](https://wordpress.org/plugins/easy-p5-js-block/).
