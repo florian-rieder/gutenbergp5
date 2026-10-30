@@ -1,0 +1,47 @@
+name: Tests
+
+# Runs the end-to-end tests (tests/e2e) on Chromium, Firefox and WebKit
+# against a wp-env WordPress site. Not part of the release workflows.
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [ chromium, firefox, webkit ]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Install ${{ matrix.browser }}
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Start WordPress
+        run: npm run env:start
+
+      - name: Run tests
+        run: npm run test:e2e -- --project=${{ matrix.browser }}
+
+      - name: Upload report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report-${{ matrix.browser }}
+          path: |
+            playwright-report/
+            artifacts/test-results/
+          retention-days: 7
